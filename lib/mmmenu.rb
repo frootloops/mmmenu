@@ -82,9 +82,9 @@ class Mmmenu
                     @deepest_current_item = item
                   end
                   has_current_item = true
-                  item_output = item_markup[:current][:block].call(item[:href], item[:title], item_markup[:current][:options].merge(item[:html_options]))
+                  item_output = item_markup[:current][:block].call(item[:href], item[:title], item[:icon], item_markup[:current][:options].merge(item[:html_options]))
         else
-          item_output = item_markup[:basic][:block].call(item[:href], item[:title], item_markup[:basic][:options].merge(item[:html_options]))
+          item_output = item_markup[:basic][:block].call(item[:href], item[:title], item[:icon], item_markup[:basic][:options].merge(item[:html_options]))
         end
         #############################################################
 
@@ -141,7 +141,7 @@ class Mmmenu
         unless @item_markup.empty?
           { :basic => @item_markup.last, :current => @current_item_markup.last }
         else
-          { :basic => {:block => lambda { |link,text,options| "#{text} #{link} #{options}\n" }, :options => {} }, :current => { :block => lambda { |link,text,options| "#{text} #{link} #{options} current\n" }, :options => {} } }
+          { :basic => {:block => lambda { |link,text,icon,options| "#{text} #{link} #{options}\n" }, :options => {} }, :current => { :block => lambda { |link,text,icon,options| "#{text} #{link} #{options} current\n" }, :options => {} } }
         end
       end
     end
